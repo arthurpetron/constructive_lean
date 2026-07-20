@@ -4,3 +4,4 @@
 *.trace
 .DS_Store
 build.log
+/_scratch
