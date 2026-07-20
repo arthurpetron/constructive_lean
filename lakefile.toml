@@ -1,5 +1,5 @@
 name = "ConstructiveReals"
-defaultTargets = ["ConstructiveReals"]
+defaultTargets = ["ConstructiveReals", "ConstructiveGroups"]
 
 # `-s 65536` raises the per-thread C++ stack (deeply nested exact-rational
 # expressions during elaboration).  `-M 20480` caps each lean worker at
@@ -13,3 +13,11 @@ weakLeanArgs = ["-s", "65536", "-M", "20480"]
 [[lean_lib]]
 name = "ConstructiveReals"
 globs = ["ConstructiveReals", "ConstructiveReals.*"]
+
+# Constructive group theory: setoid-carried groups with witness-carrying
+# homomorphisms, central-quotient presentations, representation descent,
+# and the rational quaternion algebra (unit-norm group via the reflective
+# ring normaliser).  Depends on the ConstructiveReals Q' base layer.
+[[lean_lib]]
+name = "ConstructiveGroups"
+globs = ["ConstructiveGroups", "ConstructiveGroups.*"]

@@ -55,6 +55,7 @@ import ConstructiveReals.RationalsMul
 import ConstructiveReals.Reals
 import ConstructiveReals.RegularCReal
 import ConstructiveReals.RegularCRealArith
+import ConstructiveReals.RingNormaliser
 import ConstructiveReals.SinAddNonneg
 import ConstructiveReals.Soundness
 import ConstructiveReals.Sqrt

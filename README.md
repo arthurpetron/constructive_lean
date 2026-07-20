@@ -2,6 +2,8 @@
 
 A Bishop-style constructive real analysis library for Lean 4, built against
 **Lean core only** — no Mathlib, no Batteries, no dependencies of any kind.
+A companion library, **ConstructiveGroups**, develops witness-carrying
+constructive group theory on the same base.
 
 Every existence claim carries a witness, every limit carries an explicit,
 `Type`-level Cauchy modulus, and every load-bearing theorem is gated by
@@ -59,6 +61,37 @@ Supporting series machinery: geometric tails (`Geometric.lean`,
 (`CornerBound*.lean`, `CauchyConv.lean`), finite-sum algebra
 (`FinSumAlg.lean`, `FinSumGeom.lean`), and budget-closure lemmas for
 partial sums (`RationalTail.lean`).
+
+**A reflective ring normaliser.**  `RingNormaliser.lean` is a *sound*
+kernel-decided decision procedure for multivariate polynomial identities
+over `Q'`: a reflective `PolyExpr` syntax, a canonical `NormalPoly` form,
+and a soundness theorem proved from the `Q'` ring axioms alone.  Identities
+beyond `omega` (nonlinear) and `ac_rfl` (needs distribution) are discharged
+by `decide` on `normalize LHS = normalize RHS` — demonstrated on the
+degree-2/3/4 Chu–Vandermonde convolution identities.
+
+## The ConstructiveGroups library
+
+A second library target, `ConstructiveGroups`, builds constructive group
+theory in the same discipline (representative-producing claims return
+`PSigma` data, never `Exists`; no quotient types, no `Nonempty`, no
+`noncomputable`):
+
+- `ConstructiveGroup.lean` — setoid-carried groups, homomorphisms
+  respecting source/target setoids, finite enumerations with constructive
+  coverage, injectively included finite central subgroups, and
+  central-quotient *presentations* with explicit kernel witnesses.
+- `ConstructiveRepresentationDescent.lean` — descent of homomorphisms
+  through explicit central quotients, with witness-bearing faithfulness.
+- `LocatedCentralQuotient.lean` — the coset-setoid construction from a
+  finite central subgroup plus an explicit locator (decidability is input,
+  not assumed).
+- `QuaternionSign.lean`, `RationalQuaternionAlgebra.lean`,
+  `RationalQuaternionQ8Fixture.lean`, `RationalQuaternionUnitNormGroup.lean`
+  — the rational quaternion algebra over `Q'`: Hamilton multiplication,
+  conjugation, norm; the Q8 fixture as a worked finite example; and the
+  unit-norm carrier with its algebraic laws discharged by the reflective
+  ring normaliser.
 
 ## Constructivity policy
 
