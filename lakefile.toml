@@ -1,0 +1,15 @@
+name = "ConstructiveReals"
+defaultTargets = ["ConstructiveReals"]
+
+# `-s 65536` raises the per-thread C++ stack (deeply nested exact-rational
+# expressions during elaboration).  `-M 20480` caps each lean worker at
+# 20 GB so a runaway kernel computation fails deterministically with
+# "excessive memory consumption detected" instead of swapping the host.
+weakLeanArgs = ["-s", "65536", "-M", "20480"]
+
+# Zero dependencies: this library builds against Lean core only.
+# No Mathlib, no Batteries, no Std.
+
+[[lean_lib]]
+name = "ConstructiveReals"
+globs = ["ConstructiveReals", "ConstructiveReals.*"]
